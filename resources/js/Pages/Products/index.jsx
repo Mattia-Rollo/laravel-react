@@ -28,7 +28,7 @@ export default function Products(props) {
                             ) )}
 
                         </ul>
-                        <table className="w-full text-gray-900 rounded-xl overflow-hidden table-fixed w-100 dark:text-gray-300 border-collapse border border-slate-500 ">
+                        <table className="w-full text-gray-900 table-fixed w-100 rounded-xl dark:text-gray-300 border-collapse border border-slate-900 ">
                             <thead>
                                 <tr className='dark:bg-gray-700 bg-gray-100 '>
                                 <th className='border border-slate-600 py-3'>Name</th>
@@ -49,11 +49,11 @@ export default function Products(props) {
                             </tbody>
                         </table>
 
-                        <div className='my-2'>
+                        <div className='my-5'>
                         <PrimaryButton action={toggle}>Add</PrimaryButton>
 
                         </div>
-                        {active && <h1 className='dark:text-white'>ciao</h1>
+                        {active && <h1 className='dark:text-white text-2xl'>ciao</h1>
                         }
                     </div>
                 </div>
