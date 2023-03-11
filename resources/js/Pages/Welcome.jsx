@@ -1,4 +1,12 @@
 import { Link, Head } from '@inertiajs/react';
+const theme = localStorage.getItem("theme");
+
+if(theme === 'dark' || (window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    localStorage.theme = 'dark'
+    document.documentElement.classList.add('dark');
+}else {
+    document.documentElement.classList.remove('dark');
+}
 
 export default function Welcome(props) {
     return (

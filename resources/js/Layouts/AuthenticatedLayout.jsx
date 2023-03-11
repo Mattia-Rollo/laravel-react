@@ -16,14 +16,14 @@ export default function Authenticated({ auth, header, children }) {
   
     const themeFromLocalStorage = localStorage.getItem("theme");
 
-let theme;
-if (themeFromLocalStorage) {
-  theme = themeFromLocalStorage;
-} else {
-  const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  theme = prefersDarkMode ? "dark" : "light";
-  localStorage.setItem("theme", theme);
-}
+    let theme;
+    if (themeFromLocalStorage) {
+    theme = themeFromLocalStorage;
+    } else {
+    const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    theme = prefersDarkMode ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    }
 
     const [enabled, setEnabled] = useState(theme === 'dark');
 
@@ -71,7 +71,6 @@ if (themeFromLocalStorage) {
                                 <NavLink href={route('products.index')} active={route().current('products.index')}>
                                     Products
                                 </NavLink>
-                                
                             </div>
                         </div>
 
