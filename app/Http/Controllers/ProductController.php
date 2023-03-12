@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class ProductController extends Controller
@@ -32,6 +33,16 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'name' => ['required', 'max:50'],
+            'description' => ['required', 'max:50'],
+        ]);
+        $newProduct = new Product();
+        $newProduct->name = $data['name'];
+        $newProduct->slug = Str::slug($data['name']);
+        $newProduct->description = $data['description'];
+        $newProduct->save();
+        return to_route('products.index');
     }
 
     /**

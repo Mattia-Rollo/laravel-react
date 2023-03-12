@@ -1,6 +1,7 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import PrimaryButton from '@/Components/PrimaryButton';
+import Form from '@/Components/Forms';
 import { useState } from 'react';
 
 export default function Products(props) {
@@ -53,7 +54,7 @@ export default function Products(props) {
                         <PrimaryButton action={toggle}>Add</PrimaryButton>
 
                         </div>
-                        {active && <h1 className='dark:text-white text-2xl'>ciao</h1>
+                        {active && <Form />
                         }
                     </div>
                 </div>
