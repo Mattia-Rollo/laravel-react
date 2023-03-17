@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function Products(props) {
     const [active,setActive] = useState(false);
 
-    const toggle = () => {
+    function toggle(){
         setActive(!active);
     }
     return (
