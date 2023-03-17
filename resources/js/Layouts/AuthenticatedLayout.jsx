@@ -29,24 +29,15 @@ export default function Authenticated({ auth, header, children }) {
 
     useEffect(() => {
         enabled ?
-          document.documentElement.classList.add("dark"):
-          document.documentElement.classList.remove("dark")
+          (document.documentElement.classList.add("dark"), localStorage.theme = 'dark'):
+          (document.documentElement.classList.remove("dark"), localStorage.theme = 'light')
         
       }, [enabled]);
 
     function toggleMode() {
     setEnabled(prevEnabled =>{
         const newEnabled = !prevEnabled;
-  
-    if(newEnabled) {
-        localStorage.theme = 'dark';
-        document.documentElement.classList.add('dark');
-    } else {
-        localStorage.theme = 'light';
-        document.documentElement.classList.remove('dark');
-    }
-
-    return newEnabled
+        return newEnabled
     });
 }
 
