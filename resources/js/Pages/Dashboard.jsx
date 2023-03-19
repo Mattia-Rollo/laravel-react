@@ -28,11 +28,12 @@ export default function Dashboard(props) {
         });
         Toast.fire({
             icon: "success",
-            title: "Signed in successfully",
+            title: flash.message,
         });
     };
 
     useEffect(() => {
+        console.log(props);
         if (flash.message) {
             showAlert();
             // setModal(false);
@@ -55,7 +56,7 @@ export default function Dashboard(props) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900 dark:text-gray-100">
-                            {console.log(props)} {flash.message}
+                            {} {flash.message}
                         </div>
                     </div>
                 </div>
