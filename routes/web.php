@@ -27,12 +27,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    // if (!session()->has('login')) {
-    //     // Set the success message to be displayed
-    //     session()->flash('success', 'Welcome back! You have successfully logged in.');
-    //     // Set the logged_in session variable to true
-    //     session()->put('login', true);
-    // }
+    if (!session()->has('login')) {
+
+        // dd(session());
+        // Set the success message to be displayed
+        session()->flash('message', 'Welcome back! You have successfully logged in.');
+        // Set the logged_in session variable to true
+        session()->put('login', true);
+    }
+    // dd(session());
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
