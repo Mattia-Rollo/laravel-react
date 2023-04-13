@@ -34,9 +34,16 @@ class ProductController extends Controller
     {
         //
         $data = $request->validate([
-            'name' => ['required', 'max:50'],
-            'description' => ['required', 'max:50'],
-        ]);
+            'name' => 'required|min:10|max:50',
+            'description' => 'required|min:10|max:50',
+        ], [
+
+                'name.required' => 'il nome è richiesto',
+                'description.required' => 'la descrizione è richiesta',
+                'name.min' => 'il nome deve avere minimo 10 caratteri',
+                'description.min' => 'il nome deve avere minimo 10 caratteri',
+
+            ]);
         $newProduct = new Product();
         $newProduct->name = $data['name'];
         $newProduct->slug = Str::slug($data['name']);
