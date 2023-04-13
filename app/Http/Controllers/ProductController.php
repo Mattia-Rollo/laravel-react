@@ -34,11 +34,12 @@ class ProductController extends Controller
     {
         //
         $data = $request->validate([
-            'name' => 'required|min:10|max:50',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:10|max:50',
             'description' => 'required|min:10|max:50',
         ], [
 
                 'name.required' => 'il nome è richiesto',
+                'name.regex' => 'il nome deve avere solo lettere',
                 'description.required' => 'la descrizione è richiesta',
                 'name.min' => 'il nome deve avere minimo 10 caratteri',
                 'description.min' => 'il nome deve avere minimo 10 caratteri',
@@ -83,5 +84,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+        $product->delete();
+        return to_route('products.index')->with('message', "$product->name deleted");
     }
 }

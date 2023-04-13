@@ -23,7 +23,7 @@ return (
     <div className={`text-red-600 h-6`}>{errors.name}</div>
 
     <label htmlFor="description" className='dark:text-white'>Description</label>
-    <input id="description" type="text" className={errors.name && 'bg-orange-500'} value={data.description} onChange={e => setData('description', e.target.value)} />
+    <input id="description" type="text" className={errors.description && 'bg-orange-500'} value={data.description} onChange={e => setData('description', e.target.value)} />
     <div className='text-red-600 h-6'>{errors.description}</div>
 
     <button type="submit" disabled={processing} className='dark:text-white dark:bg-slate-500 p-2 rounded mt-2 dark:hover:bg-slate-700'>Salva</button>

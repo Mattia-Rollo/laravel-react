@@ -23,10 +23,15 @@ export default function Products(props) {
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="p-6 bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <h1 className=" text-gray-900 dark:text-gray-100 text-3xl pb-4">Products</h1>
+                        <h2>{props.message}</h2>
                         <ul className='pb-6 text-gray-900 dark:text-gray-100'>
                             
                         {props.products.map(product => (
-                            <li key={product.id}>{product.name} | {product.slug} | {product.description}</li>
+                            <li key={product.id}>{product.name} | {product.slug} | {product.description} 
+                            
+                            <i class="fa-solid fa-trash"></i>
+                            
+                            </li>
                             ) )}
 
                         </ul>
