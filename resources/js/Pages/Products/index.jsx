@@ -4,9 +4,44 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import Form from '@/Components/Forms';
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
+import { useForm } from '@inertiajs/react';
+import DangerButton from '@/Components/DangerButton';
+// import { usePage } from '@inertiajs/inertia-react';
+// import Inertia from '@inertiajs/react';
 
 export default function Products(props) {
     const [active,setActive] = useState(false);
+    const { delete: deleteProduct } = useForm();
+
+    // const {
+    //     data,
+    //     setData,
+    //     delete: destroy,
+    //     processing,
+    //     reset,
+    //     errors,
+    // } = useForm({
+    //     product: null
+    // });
+
+    // const deleteProduct = (e) => {
+    //     e.preventDefault();
+
+        
+    //         if (confirm("Are you sure you want to delete this user?")) {
+    //             destroy(route('products.destroy'), {
+    //                 data,
+    //                 preserveScroll: true,
+    //                 // onSuccess: () => alert('name','description'),
+    //               })
+    //         }
+    // };
+
+    const handleDelete = (product) => {
+        if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+          deleteProduct(route('products.destroy', product))
+        }
+      }
 
     function toggle(){
         setActive(!active);
@@ -25,14 +60,26 @@ export default function Products(props) {
                         <h1 className=" text-gray-900 dark:text-gray-100 text-3xl pb-4">Products</h1>
                         <h2>{props.message}</h2>
                         <ul className='pb-6 text-gray-900 dark:text-gray-100'>
-                            
-                        {props.products.map(product => (
+                        
+                        {props.products.map((product) => (
+                        <div key={product.id}>
+                            <p>{product.name}</p>
+                            <button onClick={() => handleDelete(product)}>Elimina</button>
+                        </div>
+                        ))}
+
+                        {/* {props.products.map(product => (
                             <li key={product.id}>{product.name} | {product.slug} | {product.description} 
-                            
-                            <i class="fa-solid fa-trash"></i>
+                            <form onSubmit={deleteProduct} className='inline-block'>
+
+                            <DangerButton className="ml-3" disabled={processing} onClick={setData(product)}>
+                                <i className="fa-solid fa-trash"></i>
+                            </DangerButton>
+
+                            </form>
                             
                             </li>
-                            ) )}
+                            ) )} */}
 
                         </ul>
                         <table className="w-full text-gray-900 table-fixed w-100 rounded-xl dark:text-gray-300 border-collapse border border-slate-900 ">

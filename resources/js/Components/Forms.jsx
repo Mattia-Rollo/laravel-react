@@ -11,7 +11,7 @@ function submit(e) {
   post(route('products.store'), {
     data,
     preserveScroll: true,
-    onSuccess: () => reset('name'),
+    onSuccess: () => reset('name','description'),
   })
 }
 
