@@ -5,40 +5,20 @@ import Form from '@/Components/Forms';
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
 import { useForm } from '@inertiajs/react';
-import DangerButton from '@/Components/DangerButton';
+// import DangerButton from '@/Components/DangerButton';
 // import { usePage } from '@inertiajs/inertia-react';
 // import Inertia from '@inertiajs/react';
 
 export default function Products(props) {
     const [active,setActive] = useState(false);
+    const [activeEdit,setActiveEdit] = useState(false);
     const { delete: deleteProduct } = useForm();
 
-    // const {
-    //     data,
-    //     setData,
-    //     delete: destroy,
-    //     processing,
-    //     reset,
-    //     errors,
-    // } = useForm({
-    //     product: null
-    // });
-
-    // const deleteProduct = (e) => {
-    //     e.preventDefault();
-
-        
-    //         if (confirm("Are you sure you want to delete this user?")) {
-    //             destroy(route('products.destroy'), {
-    //                 data,
-    //                 preserveScroll: true,
-    //                 // onSuccess: () => alert('name','description'),
-    //               })
-    //         }
-    // };
 
     const handleDelete = (product) => {
         if (confirm('Sei sicuro di voler eliminare questo prodotto?')) {
+            console.log(product);
+            // break;
           deleteProduct(route('products.destroy', product))
         }
       }
@@ -62,9 +42,14 @@ export default function Products(props) {
                         <ul className='pb-6 text-gray-900 dark:text-gray-100'>
                         
                         {props.products.map((product) => (
+
                         <div key={product.id}>
+
                             <p>{product.name}</p>
+
+                            {/******************* delete botton product *************/}
                             <button onClick={() => handleDelete(product)}>Elimina</button>
+
                         </div>
                         ))}
 
@@ -92,14 +77,22 @@ export default function Products(props) {
                             </thead>
                             <tbody>
                                 {props.products.map(product => (
+
                                     <tr key={product.id} className="text-gray-400">
-                                    <td className='border border-slate-700 p-5 text-center'>{product.name}</td>
-                                    <td className='border border-slate-700 p-5 text-center'><Link href={route('products.show', product)}>{product.slug}</Link></td>
+
+                                    {/************** add edit on click ***********/}
+                                    <td className='border border-slate-700 p-5 text-center' onClick={() => setActiveEdit(true)}>
+                                        {!activeEdit ? product.name : <input type="text"  value={product.name}/>}
+                                    </td>
+
+                                    {/*********** link to single view product  **********/}
+                                    <td className='border border-slate-700 p-5 text-center'>
+                                        <Link href={route('products.show', product)}>{product.slug}</Link>
+                                    </td>
+
                                     <td className='border border-slate-700 p-5'>{product.description}</td>
                                     </tr>
-
                                 ))}
-                                
                             </tbody>
                         </table>
 
