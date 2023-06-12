@@ -24,6 +24,10 @@ return new class extends Migration {
         Schema::table('products', function (Blueprint $table) {
             //
             $table->dropForeign(['user_id']);
+            $table->dropColumn('user_id');
+            // $table->dropColumn('user_id');
+            // $table->dropForeign(['user_id']);
+            // $table->dropForeign('products_user_id_foreign');
         });
     }
 };
