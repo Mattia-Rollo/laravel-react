@@ -21,7 +21,7 @@ export default function Products(props) {
             // break;
           deleteProduct(route('products.destroy', product))
         }
-      }
+    }
 
     function toggle(){
         setActive(!active);
