@@ -16,7 +16,7 @@ function submit(e) {
 }
 
 return (
-  <form onSubmit={submit} className="flex flex-col w-3/12">
+  <form onSubmit={submit} className="flex flex-col md:w-1/2 w-100">
 
     <label htmlFor="name" className='dark:text-white'>name</label>
     <input id="name" type="text" className={errors.name && 'bg-orange-500'} value={data.name} onChange={e => setData('name', e.target.value)} />
@@ -24,7 +24,7 @@ return (
 
     <label htmlFor="description" className='dark:text-white'>Description</label>
     <input id="description" type="text" className={errors.description && 'bg-orange-500'} value={data.description} onChange={e => setData('description', e.target.value)} />
-    <div className='text-red-600 h-6'>{errors.description}</div>
+    <div className='text-red-600 h-6 '>{errors.description}</div>
 
     <button type="submit" disabled={processing} className='dark:text-white dark:bg-slate-500 p-2 rounded mt-2 dark:hover:bg-slate-700'>Salva</button>
     {progress && (

@@ -29,7 +29,7 @@ export default function Products(props) {
                         {props.products.map(product => (
                             <li key={product.id}>{product.name} | {product.slug} | {product.description} 
                             
-                            <i class="fa-solid fa-trash"></i>
+                            <i className="fa-solid fa-trash"></i>
                             
                             </li>
                             ) )}

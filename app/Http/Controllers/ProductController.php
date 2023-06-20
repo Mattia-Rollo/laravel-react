@@ -42,7 +42,7 @@ class ProductController extends Controller
                 'name.regex' => 'il nome deve avere solo lettere',
                 'description.required' => 'la descrizione è richiesta',
                 'name.min' => 'il nome deve avere minimo 10 caratteri',
-                'description.min' => 'il nome deve avere minimo 10 caratteri',
+                'description.min' => 'La descrizione deve avere minimo 10 caratteri',
 
             ]);
         $newProduct = new Product();
