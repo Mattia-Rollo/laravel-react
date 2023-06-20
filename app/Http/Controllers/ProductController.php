@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -35,7 +36,7 @@ class ProductController extends Controller
         //
         $data = $request->validate([
             'name' => 'required|regex:/^[\pL\s\-]+$/u|min:10|max:50',
-            'description' => 'required|min:10|max:50',
+            'description' => 'required|min:10',
         ], [
 
                 'name.required' => 'il nome è richiesto',

@@ -19,9 +19,11 @@ createInertiaApp({
                 <App {...props} />
             </StrictMode>);
     },
+    
     progress: {
         color: '#4B5563',
         showSpinner: true
     },
+    
 });
 

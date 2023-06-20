@@ -29,7 +29,7 @@ export default function Authenticated({ auth, header, children }) {
 
     useEffect(() => {
         enabled ?
-          (document.documentElement.classList.add("dark"), localStorage.theme = 'dark'):
+          (document.documentElement.classList.add("dark"), localStorage.theme = 'dark') :
           (document.documentElement.classList.remove("dark"), localStorage.theme = 'light')
         
       }, [enabled]);
